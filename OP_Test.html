@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="qs.css">
+  <link rel="stylesheet" href="map.css">
+  <style>
+    body{
+      max-width: 800px;
+      margin-inline: auto;
+    }
+
+    /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+	/* OP charts */
+
+	/* figure container */
+	.sb-chart-figure {
+		font-family: Helvetica, Arial;
+		font-size: 14px;
+		overflow: visible;
+		margin: 0;
+		margin-bottom: 20px;
+	}
+
+  .sb-chart text{
+    font-size: 14px;
+  }
+
+	/* legend container */
+	.sb-chart-swatches,
+	.sb-chart-swatch{
+		font-size: 13px;
+		font-family: Helvetica, Arial;
+		justify-content: center;
+	}
+
+	/* legend entries */
+	.fig-legend-swatch{
+		font-size: 13px;
+		font-family: Helvetica, Arial;
+		/*equal spacing between the swatch and the text*/
+		margin-right: 10px;
+	}
+
+	/* y axis */
+	.sb-chart g[aria-label="y-axis label"] text{
+		font-size: 14px;
+    font-family: Helvetica, Arial;
+    transform: translate(48px, 250px) rotate(-90deg);
+	}
+
+  .sb-chart g[aria-label="y-axis tick"]{
+    display: none
+  }
+
+	/* x axis */
+	.sb-chart g[aria-label="x-axis label"] text{
+		font-size: 14px;
+		transform: translate(410px, 435px);
+	}
+
+  .sb-chart g[aria-label="x-axis tick label"] :is(text){
+    /*rotate the x axis label 90 degrees*/
+    writing-mode: vertical-lr;
+    /*move down the x axis label*/
+    margin-top: 20px;
+  }
+
+  .sb-chart g[aria-label="text"]{
+    /*move to the right*/
+    transform: translate(-265px, 30px);
+    
+  }
+
+  .sb-chart g[aria-label="text"] text{
+    font-size: 20px;
+    color: '#e23e94';
+  }
+
+	.sb-chart g[aria-label="tip"] text{
+		font-size: 14px;
+		font-family: Helvetica, Arial;
+	}
+
+
+
+	/* grey-out columns that aren't being hovered */
+	.sb-chart g[aria-label="bar"]:has(rect:hover) rect:not(:hover),
+	.sb-chart g[aria-label="dot"]:has(circle:hover) circle:not(:hover){
+		fill:#eee;
+	}
+
+
+
+  /* override x axis position */
+  .report-chart:not(#fig8-5-image) .sb-chart g[aria-label="x-axis label"]{
+    transform: translateY(24px);
+  }
+
+  .sb-chart g[aria-label="x-axis tick label"]{
+    transform: translateY(30px);
+  }
+  /* bold the first line in the tooltip */
+  .sb-chart [aria-label="tip"] tspan:nth-child(1) {
+    font-weight: bold;
+  }
+
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6"></script>
+  <script type="module" src="EBO_Winter.js"></script>
+</head>
+<body>
+  <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptas est dolorem repudiandae molestias accusantium maxime modi magnam reiciendis! Debitis autem, earum sed esse possimus soluta reprehenderit ea aliquid animi dolor!</p>
+  <div class="report-chart" id="fig3-2-image">
+    <p class="title"><span>Figure 3.2</span> Historical vs FAO Projection of Net Debt-to-GDP Ratio, as a percent</p>
+    <img src="/web/default/files/publications/FA2207%20School%20Board%20Funding/fig9.png" style="width: 100%; max-width: 100%;" />
+    <p class="source">Source: FAO analysis of information provided by the Province.</p>
+    <p class="alt-text-link"><a href="#fig4_1">Accessible version</a></p>
+  </div>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero dicta voluptatibus magni facere iste mollitia aut, explicabo eos. Fuga, laboriosam. Est facilis sunt atque! Culpa distinctio deleniti dolor labore possimus.</p>
+</body>
+</html>

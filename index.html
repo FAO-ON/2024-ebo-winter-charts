@@ -34,6 +34,7 @@
 		font-size: 13px;
 		font-family: Helvetica, Arial;
 		justify-content: center;
+
 	}
 
 	/* legend entries */
@@ -57,15 +58,16 @@
 
 	/* x axis */
 	.sb-chart g[aria-label="x-axis label"] text{
+    padding-top: 10px;
 		font-size: 14px;
-		transform: translate(410px, 435px);
+		transform: translate(410px, 440px);
 	}
 
   .sb-chart g[aria-label="x-axis tick label"] :is(text){
     /*rotate the x axis label 90 degrees*/
-    writing-mode: vertical-lr;
+    font-size: 14px;
+    writing-mode: vertical-rl;
     /*move down the x axis label*/
-    margin-top: 20px;
   }
 
   .sb-chart g[aria-label="text"]{
@@ -74,9 +76,19 @@
     
   }
 
+
   .sb-chart g[aria-label="text"] text{
     font-size: 20px;
     color: '#e23e94';
+  }
+
+  .sb-chart g[aria-label="text"] :first-xh{
+    font-size: 20px;
+    color: black;
+  }
+
+  .sb-chart :first-of-type(g[aria-label="tip"]){
+    transform: translateY(30px);
   }
 
 	.sb-chart g[aria-label="tip"] text{
@@ -107,6 +119,18 @@
     font-weight: bold;
   }
 
+  #fig3-3-image .sb-chart g[aria-label="text"] text{
+    transform: translate(570px, 155px);
+  }
+
+  #fig3-3-image .sb-chart g[aria-label="y-axis label"]{
+    transform: translate(-47px,85px);
+  }
+  #fig3-2-image .sb-chart g[aria-label="y-axis label"]{
+    transform: translate(-47px,70px);
+  }
+
+
   </style>
   <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
   <script src="https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6"></script>
@@ -121,5 +145,11 @@
     <p class="alt-text-link"><a href="#fig4_1">Accessible version</a></p>
   </div>
   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero dicta voluptatibus magni facere iste mollitia aut, explicabo eos. Fuga, laboriosam. Est facilis sunt atque! Culpa distinctio deleniti dolor labore possimus.</p>
+  <div class="report-chart" id="fig3-3-image">
+    <p class="title"><span>Figure 3.3</span> Historical vs FAO Projection of Interest on Debt-to-Revenue Ratio, as a percent</p>
+    <img src="/web/default/files/publications/FA2207%20School%20Board%20Funding/fig9.png" style="width: 100%; max-width: 100%;" />
+    <p class="source">Source: FAO analysis of information provided by the Province.</p>
+    <p class="alt-text-link"><a href="#fig4_1">Accessible version</a></p>
+  </div>
 </body>
 </html>

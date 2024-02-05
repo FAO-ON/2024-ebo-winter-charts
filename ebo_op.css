@@ -1,0 +1,123 @@
+body{
+    max-width: 800px;
+    margin-inline: auto;
+  }
+
+  /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+  /* OP charts */
+
+  /* figure container */
+  .ebo-chart-figure {
+      font-family: Helvetica, Arial;
+      font-size: 14px;
+      overflow: visible;
+      margin: 0;
+      margin-bottom: 20px;
+  }
+
+.ebo-chart text{
+  font-size: 14px;
+}
+
+  /* legend container */
+  .ebo-chart-swatches,
+  .ebo-chart-swatch{
+      font-size: 13px;
+      font-family: Helvetica, Arial;
+      justify-content: center;
+
+  }
+
+  /* legend entries */
+  .fig-legend-swatch{
+      font-size: 13px;
+      font-family: Helvetica, Arial;
+      /*equal spacing between the swatch and the text*/
+      margin-right: 10px;
+  }
+
+  /* y axis */
+  .ebo-chart g[aria-label="y-axis label"] text{
+      font-size: 14px;
+  font-family: Helvetica, Arial;
+  transform: translate(48px, 250px) rotate(-90deg);
+  }
+
+.ebo-chart g[aria-label="y-axis tick"]{
+  display: none
+}
+
+  /* x axis */
+  .ebo-chart g[aria-label="x-axis label"] text{
+  padding-top: 10px;
+      font-size: 14px;
+      transform: translate(410px, 440px);
+  }
+
+.ebo-chart g[aria-label="x-axis tick label"] :is(text){
+  /*rotate the x axis label 90 degrees*/
+  font-size: 14px;
+  writing-mode: vertical-rl;
+  /*move down the x axis label*/
+}
+
+.ebo-chart g[aria-label="text"]{
+  /*move to the right*/
+  transform: translate(-265px, 30px);
+  
+}
+
+
+.ebo-chart g[aria-label="text"] text{
+  font-size: 20px;
+  color: '#e23e94';
+}
+
+.ebo-chart g[aria-label="text"] :first-xh{
+  font-size: 20px;
+  color: black;
+}
+
+.ebo-chart :first-of-type(g[aria-label="tip"]){
+  transform: translateY(30px);
+}
+
+  .ebo-chart g[aria-label="tip"] text{
+      font-size: 14px;
+      font-family: Helvetica, Arial;
+  }
+
+
+
+  /* grey-out columns that aren't being hovered */
+  .ebo-chart g[aria-label="bar"]:has(rect:hover) rect:not(:hover),
+  .ebo-chart g[aria-label="dot"]:has(circle:hover) circle:not(:hover){
+      fill:#eee;
+  }
+
+
+
+/* override x axis position */
+.report-chart:not(#fig8-5-image) .ebo-chart g[aria-label="x-axis label"]{
+  transform: translateY(24px);
+}
+
+.ebo-chart g[aria-label="x-axis tick label"]{
+  transform: translateY(30px);
+}
+/* bold the first line in the tooltip */
+.ebo-chart [aria-label="tip"] tspan:nth-child(1) {
+  font-weight: bold;
+}
+
+#fig3-3-image .ebo-chart g[aria-label="text"] text{
+  transform: translate(570px, 155px);
+}
+
+#fig3-3-image .ebo-chart g[aria-label="y-axis label"]{
+  transform: translate(-47px,85px);
+}
+#fig3-2-image .ebo-chart g[aria-label="y-axis label"]{
+  transform: translate(-47px,70px);
+}
+

@@ -1,4 +1,4 @@
-import { BarChart, ScatterPlot, StackedBarChart } from "./Chart.js";
+//import { BarChart, ScatterPlot, StackedBarChart } from "./Chart.js";
 
 /*FAO COLORS */
 const fao_blue = '#0f60d5';
@@ -16,7 +16,7 @@ const csv_dir_url = 'ebo-csv/';
 const clustered_barchart_padding = 0.3;
 const regular_chart_padding = 0.1;
 
-let chartOption = {width: 1000, height:600, className: "sb-chart", marginLeft: 55, marginBottom: 80, marginRight: 0};
+let chartOption = {width: 800, height:600, className: "ebo-chart", marginLeft: 50, marginBottom: 100, marginRight: 0};
 
 function replaceFig(figId,graphElement){
     //DOCSTRING: Replaces the image with the graph element
@@ -32,7 +32,7 @@ function replaceGElem(figId){
     //ex: fig3-2-image sb-char5 g[aria-label="y-axis label"]
 
 
-    const gElement = document.querySelector('div#'+figId+'-image.report-chart figure.sb-chart-figure svg.sb-chart g[aria-label="y-axis label"]');
+    const gElement = document.querySelector('div#'+figId+'-image.report-chart figure.ebo-chart-figure svg.ebo-chart g[aria-label="y-axis label"]');
 
     //go inside the g element and find the g element with aria-label="y-axis label"
     //gElement = gElement[0].querySelectorAll('g[aria-label="y-axis label"]');
@@ -64,7 +64,7 @@ function replaceGElem(figId){
 
 function displayEveryOtherTickLabel(figId){
     //Display every other tick label
-    const gElement = document.querySelector('div#'+figId+'-image.report-chart figure.sb-chart-figure svg.sb-chart g[aria-label="x-axis tick label"]');
+    const gElement = document.querySelector('div#'+figId+'-image.report-chart figure.ebo-chart-figure svg.ebo-chart g[aria-label="x-axis tick label"]');
     for(let i = 0; i < gElement.children.length; i++){
         if(i % 2 != 0){
             gElement.children[i].style.display = "none";
@@ -90,9 +90,9 @@ d3.csv(csv_dir_url + "3_2.csv").then(d => {
     fig3_2_historical = fig3_2_historical.filter(d => d["Net-Debt"] != 0);
     const fig3_2 = Plot.plot({
         className:  chartOption.className,
-        width: 800,
-        marginBottom: 100,
-        marginLeft: 50,
+        width: chartOption.width,
+        marginBottom: chartOption.marginBottom,
+        marginLeft: chartOption.marginLeft,
         x: {label: "Historical", type: "point", padding: 0.2},
         y: {label: "Net Debt-to-GDP Ratio (Per Cent)", domain: [0, 45], fy: 20},
         marks:[
@@ -125,19 +125,10 @@ d3.csv(csv_dir_url + "3_3.csv").then(d => {
     fig3_3_projections = fig3_3_projections.filter(d => d["Net-Debt"] != 0);
     fig3_3_historical = fig3_3_historical.filter(d => d["Net-Debt"] != 0);
     const fig3_3 = Plot.plot({
-    /*
+        className:  chartOption.className,
         width: chartOption.width,
-        height: chartOption.height,
-        
-        marginTop: chartOption.marginTop,
         marginBottom: chartOption.marginBottom,
         marginLeft: chartOption.marginLeft,
-        marginRight: chartOption.marginRight,
-        */
-        className:  chartOption.className,
-        width: 800,
-        marginBottom: 100,
-        marginLeft: 50,
         x: {label: "Historical", type: "point", padding: 0.2},
         y: {label: "Interest on Debt-to-Revenue Ratio (Per Cent)", domain: [0, 16], fy: 2},
         marks:[

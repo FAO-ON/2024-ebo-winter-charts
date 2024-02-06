@@ -15,10 +15,13 @@ body{
       margin-bottom: 20px;
   }
 
-.ebo-chart text{
+.ebo-chart :not(g[aria-label="text"]) text{
   font-size: 14px;
 }
 
+.ebo-chart-swatches{
+    gap:3rem;
+}
   /* legend container */
   .ebo-chart-swatches,
   .ebo-chart-swatch{
@@ -26,6 +29,15 @@ body{
       font-family: Helvetica, Arial;
       justify-content: center;
 
+  }
+
+  .ebo-chart-swatches .ebo-chart-swatch svg{
+     height: 5px;
+     width: 45px;
+     border-radius: 5px; 
+  }
+  .ebo-chart-swatches .ebo-chart-swatch svg rect{
+    rx: 3px;
   }
 
   /* legend entries */
@@ -61,39 +73,23 @@ body{
   /*move down the x axis label*/
 }
 
-.ebo-chart g[aria-label="text"]{
-  /*move to the right*/
-  transform: translate(-265px, 30px);
-  
-}
-
-
-.ebo-chart g[aria-label="text"] text{
-  font-size: 20px;
-  color: '#e23e94';
-}
-
-.ebo-chart g[aria-label="text"] :first-xh{
-  font-size: 20px;
-  color: black;
-}
 
 .ebo-chart :first-of-type(g[aria-label="tip"]){
   transform: translateY(30px);
 }
 
-  .ebo-chart g[aria-label="tip"] text{
-      font-size: 14px;
-      font-family: Helvetica, Arial;
-  }
+.ebo-chart g[aria-label="tip"] text{
+    font-size: 14px;
+    font-family: Helvetica, Arial;
+}
 
 
 
-  /* grey-out columns that aren't being hovered */
-  .ebo-chart g[aria-label="bar"]:has(rect:hover) rect:not(:hover),
-  .ebo-chart g[aria-label="dot"]:has(circle:hover) circle:not(:hover){
-      fill:#eee;
-  }
+/* grey-out columns that aren't being hovered */
+.ebo-chart g[aria-label="bar"]:has(rect:hover) rect:not(:hover),
+.ebo-chart g[aria-label="dot"]:has(circle:hover) circle:not(:hover){
+    fill:#eee;
+}
 
 
 
@@ -104,6 +100,9 @@ body{
 
 .ebo-chart g[aria-label="x-axis tick label"]{
   transform: translateY(30px);
+}
+.ebo-chart g[aria-label="x-axis tick"]{
+  color: white;
 }
 /* bold the first line in the tooltip */
 .ebo-chart [aria-label="tip"] tspan:nth-child(1) {
@@ -120,4 +119,12 @@ body{
 #fig3-2-image .ebo-chart g[aria-label="y-axis label"]{
   transform: translate(-47px,70px);
 }
+
+/*moving "Projection" text to proper place*/
+
+#fig3-2-image .ebo-chart g[aria-label="text"]:first-of-type text{
+    color: red;
+    font-size: 14px;
+}
+
 

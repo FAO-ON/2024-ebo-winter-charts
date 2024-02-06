@@ -1,6 +1,7 @@
 //import { BarChart, ScatterPlot, StackedBarChart } from "./Chart.js";
 
 /*FAO COLORS */
+const fao_gray = '#D9D9D9'
 const fao_blue = '#0f60d5';
 const white = '#ffffff';
 const fao_dark_blue = '#1a2b4a';
@@ -62,6 +63,8 @@ function replaceGElem(figId){
 };
 
 
+
+
 function displayEveryOtherTickLabel(figId){
     //Display every other tick label
     const gElement = document.querySelector('div#'+figId+'-image.report-chart figure.ebo-chart-figure svg.ebo-chart g[aria-label="x-axis tick label"]');
@@ -98,9 +101,20 @@ d3.csv(csv_dir_url + "3_2.csv").then(d => {
         marks:[
             Plot.line(fig3_2_historical, {x: "Year", y: "Net-Debt", stroke: black, strokeWidth: 5,  }),
             Plot.line(fig3_2_projections, {x: "Year", y: "Net-Debt", stroke: fao_blue, strokeWidth: 5,}),
+
+            Plot.line([{Year: "2021-22", "Net-Debt": 37.0}, {Year: "2022-23", "Net-Debt": 38.3}], {x: "Year", y: "Net-Debt", stroke: fao_gray, strokeWidth: 1}),
+            
+
             Plot.ruleY([40], {stroke: fao_pink, strokeWidth: 2, strokeDasharray: "5,5"}),
-            //Plot.text(["40%"], {y: 40, dy: 25, dx: -300, fontSize: 40,  fill: fao_pink, text: d => d, color: fao_pink}),
-            Plot.text(["Government Target"], {y: 46, dy: 25, dx: -300, fontSize: 40,  fill: fao_pink, text: d => d, color: fao_pink}),
+
+            Plot.text(["Government Target"], {y: 46, dy: 38, dx: -280, fontSize: 14, fill: fao_pink}),
+            Plot.text(["Projection"], {y: 0, dy: 90, dx: 330, fontSize: 14}),
+            Plot.text([38.3], {y: 36.0, dy: 5, dx: 265, fontSize: 14}),
+            Plot.text(["37.0"], {y: 36.0, dy: 5, dx: 370, fontSize: 14}),
+
+            Plot.ruleX(["2023-24"], {strokeWidth: 1, dx:-5, strokeDasharray: "5,5"}),
+            Plot.ruleY([0], {stroke: black, strokeWidth: 1}),
+
             Plot.tip([{Year: "1997-98", "Net-Debt": 40},{Year: "1986-87", "Net-Debt": 40},{Year: "1991-92", "Net-Debt": 40},{Year: "2002-03", "Net-Debt": 40}, {Year: "1994-95", "Net-Debt": 40},{Year: "2005-06", "Net-Debt": 40},{Year: "1987-88", "Net-Debt": 40}], Plot.pointer({x: "Year", y: "Net-Debt",  anchor: "bottom", title: (d) => "Government Target: " +  `${d["Net-Debt"]}` + "%", lineHeight: 1})),
             Plot.tip(formatted_d, Plot.pointer(
                 {x: "Year", y: "Net-Debt", title: (d) => "Year: " + `${d.Year}` + '\n' + "Net Debt-to-GDP Ratio (%): " + `${d["Net-Debt"]}` + "%", lineHeight: 1}
@@ -114,6 +128,7 @@ d3.csv(csv_dir_url + "3_2.csv").then(d => {
     replaceFig("fig3-2",fig3_2);
     replaceGElem("fig3-2");
     displayEveryOtherTickLabel("fig3-2");
+    
 });
 
 d3.csv(csv_dir_url + "3_3.csv").then(d => {
@@ -134,9 +149,21 @@ d3.csv(csv_dir_url + "3_3.csv").then(d => {
         marks:[
             Plot.line(fig3_3_historical, {x: "Year", y: "Net-Debt", stroke: black, strokeWidth: 5,  }),
             Plot.line(fig3_3_projections, {x: "Year", y: "Net-Debt", stroke: fao_blue, strokeWidth: 5,}),
+
             Plot.ruleY([7.5], {stroke: fao_pink, strokeWidth: 2, strokeDasharray: "5,5"}),
-            Plot.text(["Government Target"], {y: 12, dy:-200, fontSize: 40,  fill: fao_pink, color: fao_pink}),
-            Plot.tip([{Year: "2000-01", "Net-Debt": 7.5},{Year: "1997-98", "Net-Debt": 7.5},{Year: "2002-03", "Net-Debt": 7.5}, {Year: "1994-95", "Net-Debt": 7.5}], Plot.pointer({x: "Year", y: "Net-Debt",  anchor: "top", title: (d) => "Government Target: " +  `${d["Net-Debt"]}` + "%", lineHeight: 1})),
+            Plot.ruleY([0], {stroke: black, strokeWidth: 1}),
+            Plot.ruleX(["2023-24"], {strokeWidth: 1, dx:-7,strokeDasharray: "5,5", length: 10}),
+
+            Plot.text(["Projection"], {y: 0, dy:300, dx:180, fontSize: 14}),
+            Plot.text(["Government Target"], {y: 12, dx:-250, dy: 40, fontSize:14, fill: fao_pink, color: fao_pink}),
+
+            //Draw a line going from 2021-22, 5.4 to 2022-23, 6.4
+            Plot.line([{Year: "2021-22", "Net-Debt": 5.4}, {Year: "2022-23", "Net-Debt": 6.4}], {x: "Year", y: "Net-Debt", stroke: fao_gray, strokeWidth: 1}),
+
+            Plot.text([6.4], {y: 6.4, dx: 115, dy: 110, fontSize: 14, fill: black, color: fao_gray}),
+            Plot.text([6.8], {y: 6.4, dx: 210, dy: 80, fontSize: 14, fill: black, color: fao_gray}),
+
+
             //Plot.text(["40%"], {y: 7.5, dy: 25, dx: -300, fontSize: 40,  fill: fao_pink, text: d => d, color: fao_pink}),
             Plot.tip(formatted_d, Plot.pointer(
                 {x: "Year", y: "Net-Debt", title: (d) => "Year: " + `${d.Year}` + '\n' + "Net Debt-to-GDP Ratio (%): " + `${Intl.NumberFormat('en-CA', { maximumSignificantDigits: 3}).format(d["Net-Debt"])}` + "%", lineHeight: 1}
@@ -149,3 +176,8 @@ d3.csv(csv_dir_url + "3_3.csv").then(d => {
     replaceGElem("fig3-3");
     displayEveryOtherTickLabel("fig3-3");
 });
+
+document.setInterval(() => {
+    //check if the tip has a children, if it does then 
+    let tips = d3.select(fig3_2).selectAll(ti)
+}, 1000);

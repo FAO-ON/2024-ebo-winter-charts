@@ -163,8 +163,7 @@ d3.csv(csv_dir_url + "3_3.csv").then(d => {
             Plot.text([6.4], {y: 6.4, dx: 115, dy: 110, fontSize: 14, fill: black, color: fao_gray}),
             Plot.text([6.8], {y: 6.4, dx: 210, dy: 80, fontSize: 14, fill: black, color: fao_gray}),
 
-
-            //Plot.text(["40%"], {y: 7.5, dy: 25, dx: -300, fontSize: 40,  fill: fao_pink, text: d => d, color: fao_pink}),
+            Plot.tip([{Year: "2011-12", "Net-Debt": 7.5},,{Year: "2007-08", "Net-Debt": 7.5},{Year: "2010-11", "Net-Debt": 7.5},{Year: "1987-98", "Net-Debt": 7.5},{Year: "1998-99", "Net-Debt": 7.5},{Year: "2002-03", "Net-Debt": 7.5}, {Year: "1994-95", "Net-Debt": 7.5},{Year: "2005-06", "Net-Debt": 7.5},{Year: "1987-88", "Net-Debt": 7.5}], Plot.pointer({x: "Year", y: "Net-Debt",  anchor: "top", title: (d) => "Government Target: " +  `${d["Net-Debt"]}` + "%", lineHeight: 1})),
             Plot.tip(formatted_d, Plot.pointer(
                 {x: "Year", y: "Net-Debt", title: (d) => "Year: " + `${d.Year}` + '\n' + "Net Debt-to-GDP Ratio (%): " + `${Intl.NumberFormat('en-CA', { maximumSignificantDigits: 3}).format(d["Net-Debt"])}` + "%", lineHeight: 1}
             )),

@@ -69,8 +69,12 @@ body{
 .ebo-chart g[aria-label="x-axis tick label"] :is(text){
   /*rotate the x axis label 90 degrees*/
   font-size: 14px;
-  writing-mode: vertical-rl;
+  /*writing-mode: vertical-lr;*/
+  /*transform: rotate(180deg);*/
+  
+  /*use text-orientation to rotate the text*/
   /*move down the x axis label*/
+  
 }
 
 
@@ -99,10 +103,10 @@ body{
 }
 
 .ebo-chart g[aria-label="x-axis tick label"]{
-  transform: translateY(30px);
+  transform: translateY(65px);
 }
 .ebo-chart g[aria-label="x-axis tick"]{
-  color: white;
+  color: black;
 }
 /* bold the first line in the tooltip */
 .ebo-chart [aria-label="tip"] tspan:nth-child(1) {

@@ -51,7 +51,7 @@ function replaceGElem(figId){
                 textElement.textContent = "Ratio dette nette-PIB (en pourcentage)";
             }
             else{
-                textElement.textContent = "Interest on Debt-to-Revenue Ratio (Per Cent)";
+                textElement.textContent = "Ratio intérêt de la dette-revenus (en pourcentage)";
             }
         } else {    
             console.error('No <text> element found within <g>');
